@@ -11,14 +11,13 @@ class CreatePegawaiTable extends Migration
         Schema::create('pegawai', function (Blueprint $table) {
             $table->id('id_pegawai'); // pastikan menggunakan 'id_pegawai'
             $table->string('nama_lengkap');
-            $table->string('departemen');
+            $table->string('nip')->unique();
             $table->string('jabatan');
-            $table->date('tanggal_masuk_kerja');
+            $table->string('ruangan');
+            $table->date('awal_masuk_kerja');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->integer('jatah_cuti_tahunan')->default(12);
-            $table->integer('jatah_cuti_sakit')->default(6);
-            $table->integer('sisa_cuti')->default(12);
+            $table->string('no_handphone')->unique();
+            $table->string('alamat');
             $table->timestamps();
         });
     }

@@ -16,14 +16,13 @@ class Pegawai extends Model
 
     protected $fillable = [
         'nama_lengkap',
-        'departemen',
+        'nip',
         'jabatan',
-        'tanggal_masuk_kerja',
+        'ruangan',
+        'alamat',
+        'awal_masuk_kerja',
         'email',
-        'password',
-        'jatah_cuti_tahunan',
-        'jatah_cuti_sakit',
-        'sisa_cuti',
+        'no_handphone'
     ];
 
     // Relasi ke pengajuan cuti

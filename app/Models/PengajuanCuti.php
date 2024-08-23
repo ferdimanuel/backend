@@ -16,14 +16,11 @@ class PengajuanCuti extends Model
 
     protected $fillable = [
         'id_pegawai',
-        'tanggal_pengajuan',
         'tanggal_mulai',
         'tanggal_berakhir',
         'alasan_cuti',
         'tipe_cuti',
-        'status_pengajuan',
-        'catatan_persetujuan',
-        'tanggal_persetujuan',
+        'status_pengajuan'
     ];
 
     // Relasi ke pegawai

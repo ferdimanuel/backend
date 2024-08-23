@@ -13,14 +13,11 @@ class CreatePengajuanCutiTable extends Migration
             $table->foreignId('id_pegawai')
                   ->constrained('pegawai', 'id_pegawai')
                   ->onDelete('cascade'); // pastikan menggunakan 'id_pegawai'
-            $table->date('tanggal_pengajuan');
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
             $table->string('alasan_cuti');
             $table->string('tipe_cuti');
             $table->string('status_pengajuan')->default('Dalam Proses');
-            $table->string('catatan_persetujuan')->nullable();
-            $table->date('tanggal_persetujuan')->nullable();
             $table->timestamps();
         });
     }

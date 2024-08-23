@@ -14,14 +14,13 @@ class PegawaiFactory extends Factory
     {
         return [
             'nama_lengkap' => $this->faker->name(),
-            'departemen' => $this->faker->randomElement(['IT', 'HR', 'Finance']),
+            'nip' => $this->faker->unique()->numerify('#####'),
             'jabatan' => $this->faker->jobTitle(),
-            'tanggal_masuk_kerja' => $this->faker->date(),
+            'ruangan' => $this->faker->randomElement(['SIRS', 'IGD ', 'Radiolgi', 'THT', 'Farmasi','Kamar Operasi']),
+            'alamat' => $this->faker->address(),
+            'awal_masuk_kerja' => $this->faker->date(),
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => Hash::make('password'),
-            'jatah_cuti_tahunan' => 12,
-            'jatah_cuti_sakit' => 6,
-            'sisa_cuti' => 12,
+            'no_handphone' => $this->faker->phoneNumber(),
         ];
     }
 }

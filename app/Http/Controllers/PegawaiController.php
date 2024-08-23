@@ -16,14 +16,15 @@ class PegawaiController extends Controller
     {
         $validated = $request->validate([
             'nama_lengkap' => 'required|string',
-            'departemen' => 'required|string',
+            'nip' => 'required|string|unique:pegawai,nip',
             'jabatan' => 'required|string',
-            'tanggal_masuk_kerja' => 'required|date',
+            'ruangan' => 'required|string',
+            'alamat' => 'required|string',
+            'awal_masuk_kerja' => 'required|date',
             'email' => 'required|email|unique:pegawai,email',
-            'password' => 'required|string|min:8',
+            'no_handphone' => 'required|string|unique:pegawai,no_handphone',
         ]);
 
-        $validated['password'] = bcrypt($validated['password']);
         $pegawai = Pegawai::create($validated);
         return response()->json($pegawai, 201);
     }
@@ -36,7 +37,19 @@ class PegawaiController extends Controller
     public function update(Request $request, $id)
     {
         $pegawai = Pegawai::findOrFail($id);
-        $pegawai->update($request->all());
+
+        $validated = $request->validate([
+            'nama_lengkap' => 'sometimes|required|string',
+            'nip' => 'sometimes|required|string|unique:pegawai,nip,' . $pegawai->id_pegawai . ',id_pegawai',
+            'jabatan' => 'sometimes|required|string',
+            'ruangan' => 'sometimes|required|string',
+            'alamat' => 'sometimes|required|string',
+            'awal_masuk_kerja' => 'sometimes|required|date',
+            'email' => 'sometimes|required|email|unique:pegawai,email,' . $pegawai->id_pegawai . ',id_pegawai',
+            'no_handphone' => 'sometimes|required|string|unique:pegawai,no_handphone,' . $pegawai->id_pegawai . ',id_pegawai',
+        ]);
+
+        $pegawai->update($validated);
         return response()->json($pegawai, 200);
     }
 

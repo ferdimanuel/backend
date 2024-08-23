@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Buat 10 pegawai dan setiap pegawai punya 3 pengajuan cuti
-        Pegawai::factory(10)->create()->each(function ($pegawai) {
-            PengajuanCuti::factory(3)->create(['id_pegawai' => $pegawai->id_pegawai]);
+        Pegawai::factory(50)->create()->each(function ($pegawai) {
+            PengajuanCuti::factory(4)->create(['id_pegawai' => $pegawai->id_pegawai]);
         });
     }
 }
