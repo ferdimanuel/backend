@@ -1,7 +1,5 @@
 <?php
 
-// app/Models/Pegawai.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,6 +11,8 @@ class Pegawai extends Model
 
     protected $table = 'pegawai';
     protected $primaryKey = 'id_pegawai';
+    public $incrementing = false; // jika primary key bukan integer auto-increment
+    protected $keyType = 'string'; // jika primary key bukan integer
 
     protected $fillable = [
         'nama_lengkap',
@@ -28,7 +28,8 @@ class Pegawai extends Model
     // Relasi ke pengajuan cuti
     public function pengajuanCuti()
     {
-        return $this->hasMany(PengajuanCuti::class, 'id_pegawai');
+        return $this->hasMany(PengajuanCuti::class, 'nip', 'nip');
     }
 }
+
 

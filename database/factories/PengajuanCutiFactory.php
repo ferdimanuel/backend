@@ -1,7 +1,5 @@
 <?php
 
-// database/factories/PengajuanCutiFactory.php
-
 namespace Database\Factories;
 
 use App\Models\PengajuanCuti;
@@ -14,8 +12,9 @@ class PengajuanCutiFactory extends Factory
 
     public function definition()
     {
+        // Pastikan nip yang digunakan adalah milik pegawai yang sudah ada
         return [
-            'id_pegawai' => Pegawai::factory(),
+            'nip' => $this->faker->randomElement(Pegawai::pluck('nip')->toArray()), // Ambil nip dari pegawai yang sudah ada
             'tanggal_mulai' => $this->faker->date(),
             'tanggal_berakhir' => $this->faker->date(),
             'alasan_cuti' => $this->faker->sentence(),
@@ -24,3 +23,5 @@ class PengajuanCutiFactory extends Factory
         ];
     }
 }
+
+

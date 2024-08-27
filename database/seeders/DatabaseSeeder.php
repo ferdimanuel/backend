@@ -1,7 +1,5 @@
 <?php
 
-// database/seeders/DatabaseSeeder.php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -12,9 +10,11 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        // Buat 10 pegawai dan setiap pegawai punya 3 pengajuan cuti
+        // Buat 50 pegawai
         Pegawai::factory(50)->create()->each(function ($pegawai) {
-            PengajuanCuti::factory(4)->create(['id_pegawai' => $pegawai->id_pegawai]);
+            // Buat 3 pengajuan cuti untuk setiap pegawai
+            PengajuanCuti::factory(3)->create(['nip' => $pegawai->nip]);
         });
     }
 }
+
