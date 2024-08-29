@@ -9,15 +9,16 @@ class CreatePegawaiTable extends Migration
     public function up()
     {
         Schema::create('pegawai', function (Blueprint $table) {
-            $table->id('id_pegawai'); // pastikan menggunakan 'id_pegawai'
+            $table->id();
             $table->string('nama_lengkap');
             $table->string('nip')->unique();
             $table->string('jabatan');
             $table->string('ruangan');
+            $table->string('alamat');
             $table->date('awal_masuk_kerja');
             $table->string('email')->unique();
             $table->string('no_handphone')->unique();
-            $table->string('alamat');
+            $table->string('password');
             $table->timestamps();
         });
     }

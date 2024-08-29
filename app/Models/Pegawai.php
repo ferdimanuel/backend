@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class Pegawai extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
 
-    protected $table = 'pegawai';
-    protected $primaryKey = 'id_pegawai';
-    public $incrementing = false; // jika primary key bukan integer auto-increment
-    protected $keyType = 'string'; // jika primary key bukan integer
+    // Jika nama tabel tidak sesuai konvensi, tentukan nama tabel secara eksplisit
+    protected $table = 'pegawai'; // Sesuaikan dengan nama tabel yang benar
 
     protected $fillable = [
         'nama_lengkap',
@@ -22,14 +21,12 @@ class Pegawai extends Model
         'alamat',
         'awal_masuk_kerja',
         'email',
-        'no_handphone'
+        'no_handphone',
+        'password',
     ];
 
-    // Relasi ke pengajuan cuti
-    public function pengajuanCuti()
-    {
-        return $this->hasMany(PengajuanCuti::class, 'nip', 'nip');
-    }
+    protected $hidden = [
+        'password',
+    ];
 }
-
 
