@@ -12,7 +12,7 @@ class Pegawai extends Model
 
     // Jika nama tabel tidak sesuai konvensi, tentukan nama tabel secara eksplisit
     protected $table = 'pegawai'; // Sesuaikan dengan nama tabel yang benar
-
+    protected $primaryKey = 'id_pegawai';
     protected $fillable = [
         'nama_lengkap',
         'nip',
